@@ -1,0 +1,124 @@
+@import url("@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap');");
+
+$primary: hsl(220, 98%, 61%);
+$text: #151515;
+$gradient: linearGradient hsl(192, 100%, 67%) to hsl(280, 87%, 65%);
+$lightGray: hsl(0, 0%, 98%);
+$lightGrayishBlue1: hsl(236, 33%, 92%);
+$lightGrayishBlue2: hsl(233, 11%, 84%);
+$darkGrayishBlue: hsl(236, 9%, 61%);
+$darkGrayishBlue: hsl(235, 19%, 35%);
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 10px;
+}
+
+body {
+  font-family: "Josefin Sans", sans-serif;
+  background: $lightGrayishBlue2;
+  color: $text-color;
+  line-height: 1.6;
+  height: 100%;
+  min-height: 100vh;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 600;
+}
+
+h1 {
+  font-size: 3rem;
+}
+
+h2 {
+  font-size: 2.5rem;
+}
+
+p {
+  font-size: 1.8rem;
+  font-weight: 400;
+}
+
+a {
+  text-decoration: none;
+  color: #fff;
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  width: 100%;
+}
+
+%btn {
+  display: inline-block;
+  border: 0;
+  background: $secondary-color;
+  color: #fff;
+  border-radius: 16px;
+  padding: 1rem 3rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 1.6rem;
+  outline: none;
+  cursor: pointer;
+  text-align: center;
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+.btn-primary {
+  @extend %btn;
+  background-color: $primary-color;
+}
+
+.btn-secondary {
+  @extend %btn;
+  background-color: lighten($secondary-color, 20%);
+}
+
+.primary-text {
+  color: $primary-color;
+}
+
+.secondary-text {
+  color: $secondary-color;
+}
+
+header {
+  position: fixed;
+  z-index: 2;
+  width: 100%;
+  height: 20vh;
+}
+
+.container {
+  position: relative;
+  width: 50%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.section {
+  position: relative;
+  padding: 0 20px;
+}
+
+.flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
