@@ -1,13 +1,16 @@
-@import url("@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap');");
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap");
 
 $primary: hsl(220, 98%, 61%);
+$secondary: white;
 $text: #151515;
 $gradient: linearGradient hsl(192, 100%, 67%) to hsl(280, 87%, 65%);
-$lightGray: hsl(0, 0%, 98%);
-$lightGrayishBlue1: hsl(236, 33%, 92%);
-$lightGrayishBlue2: hsl(233, 11%, 84%);
-$darkGrayishBlue: hsl(236, 9%, 61%);
-$darkGrayishBlue: hsl(235, 19%, 35%);
+$gray1: hsl(0, 0%, 98%);
+$gray2: hsl(236, 33%, 92%);
+$gray3: hsl(233, 11%, 84%);
+$gray4: hsl(236, 9%, 61%);
+$gray5: hsl(235, 19%, 35%);
+$lightHomeImage: url("/public/img/bg-desktop-light.jpg");
+$darkHomeImage: url("/public/img/bg-desktop-dark.jpg");
 
 *,
 *:before,
@@ -23,8 +26,9 @@ html {
 
 body {
   font-family: "Josefin Sans", sans-serif;
-  background: $lightGrayishBlue2;
+  background: $gray1;
   color: $text;
+  font-size: 1.4rem;
   line-height: 1.6;
   height: 100%;
   min-height: 100vh;
@@ -38,6 +42,7 @@ h3 {
 
 h1 {
   font-size: 3rem;
+  color: $secondary;
 }
 
 h2 {
@@ -45,7 +50,7 @@ h2 {
 }
 
 p {
-  font-size: 1.8rem;
+  font-size: 1.4rem;
   font-weight: 400;
 }
 
@@ -62,40 +67,103 @@ img {
   width: 100%;
 }
 
-header {
-  position: fixed;
-  z-index: 2;
+.background {
+  background: $lightHomeImage;
+  background-size: cover;
+  position: absolute;
+  top: 0;
+  height: 30vh;
   width: 100%;
-  height: 20vh;
 }
 
 main {
   position: relative;
   width: 50%;
   max-width: 1000px;
-  margin: 0 auto;
+  margin: 5rem auto;
+  min-height: 30vh;
 }
 
-.section {
-  position: relative;
-  padding: 0 20px;
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  img {
+    height: 25px;
+    width: 25px;
+  }
 }
 
 .flex {
   display: flex;
   justify-content: center;
   align-items: center;
+  > div,
+  > li,
+  > p {
+    padding: 1rem;
+  }
 }
 
+form {
+  width: 100%;
+  background: $secondary;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: left;
+  margin: 2rem auto;
+  padding: 0 2rem;
+  .round {
+    height: 24px;
+    width: 24px;
+    border-radius: 50%;
+    border: 1px solid $gray2;
+  }
+  input {
+    padding: 2rem;
+    font-size: 2rem;
+    color: $gray4;
+    outline: none;
+    border: none;
+    &::placeholder {
+      opacity: 0.5;
+    }
+  }
+}
 .todo-list-container {
   display: flex;
   justify-content: flex-start;
   align-items: center;
   flex-direction: column;
+  background: $secondary;
+  border-radius: 5px;
+  background: $secondary;
 }
 
 .info-section {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
+  padding: 2rem;
+  color: $gray4;
+  li {
+    cursor: pointer;
+    transition: all 0.3s ease;
+    &:hover {
+      color: $primary;
+    }
+    &.clicked {
+      color: $primary;
+    }
+  }
+}
+
+.drag-drop {
+  text-align: center;
+  padding: 5rem;
+  font-size: 1rem;
+  color: $gray4;
 }

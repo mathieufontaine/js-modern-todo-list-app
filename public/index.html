@@ -11,25 +11,28 @@
 </head>
 
 <body>
+    <div class="background"></div>
     <main>
         <header>
             <h1>TODO</h1>
+            <img src="img/icon-moon.svg" alt="moon">
         </header>
         <form action="">
-            <input type="text" class="todo-input">
+            <div class="round"></div>
+            <input type="text" class="todo-input" placeholder="Create a new todo..">
         </form>
         <div class="todo-list-container">
             <ul class="todo-list"></ul>
             <div class="info-section">
                 <p class="items-left">items left</p>
                 <ul class="todo-filter flex">
-                    <li class="all">All</li>
+                    <li class="all clicked">All</li>
                     <li class="active">Active</li>
                     <li class="completed">completed</li>
                 </ul>
-                <div class="action-todos">
-                    <p class="clear">items left</p>
-                    <p class="completed">items left</p>
+                <div class="action-todos flex">
+                    <p class="clear">clear</p>
+                    <p class="completed">completed</p>
                 </div>
             </div>
         </div>
