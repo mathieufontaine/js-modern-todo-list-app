@@ -37,6 +37,7 @@ h2 {
 p {
   font-size: 1.4rem;
   font-weight: 400;
+  margin-bottom: 0;
 }
 
 a {
@@ -119,7 +120,6 @@ form,
       -ms-flex-pack: start;
           justify-content: flex-start;
   text-align: left;
-  margin: 2rem auto;
   padding: 0 2rem;
 }
 
@@ -160,6 +160,25 @@ form input::placeholder,
   border: 1px solid #e4e5f1;
   -webkit-transition: all 0.5s ease;
   transition: all 0.5s ease;
+  position: relative;
+  cursor: pointer;
+}
+
+.round:hover {
+  border: none;
+  background: -webkit-gradient(linear, left top, right top, from(#57ddff), to(#c058f3));
+  background: linear-gradient(to right, #57ddff, #c058f3);
+}
+
+.round:hover::after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  left: 2px;
+  bottom: 2px;
+  background: #fafafa;
+  border-radius: 50%;
 }
 
 .todo-list-container {
@@ -179,18 +198,66 @@ form input::placeholder,
   background: white;
   border-radius: 5px;
   background: white;
+  margin: 2rem auto;
+  border-radius: 5px;
+  overflow: hidden;
+  -webkit-box-shadow: 1px 1px 7px gainsboro;
+          box-shadow: 1px 1px 7px gainsboro;
 }
 
 .todo-list-container .todo-list {
   width: 100%;
 }
 
-.todo-list-container .todo p {
-  padding: 0 2rem;
+.todo-list-container .todo {
+  border-bottom: 1px solid #e4e5f1;
+  border-radius: 0;
+  cursor: pointer;
 }
 
-.todo-list-container .todo .round.completed {
-  background: linearGradient #57ddff to #c058f3;
+.todo-list-container .todo p {
+  padding: 3rem;
+  line-height: 100%;
+  width: 100%;
+}
+
+.todo-list-container .todo .cross {
+  opacity: 0;
+  margin-left: auto;
+  height: 24px;
+  width: 24px;
+  cursor: pointer;
+}
+
+.todo-list-container .todo:hover .cross {
+  opacity: 1;
+}
+
+.todo-list-container .todo.completed p {
+  opacity: 0.5;
+  text-decoration: line-through;
+}
+
+.todo-list-container .todo.completed .round {
+  background: -webkit-gradient(linear, left top, right top, from(#57ddff), to(#c058f3));
+  background: linear-gradient(to right, #57ddff, #c058f3);
+  border: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.todo-list-container .todo.completed .round::after {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  color: white;
+  content: "\f00c";
 }
 
 .info-section {
@@ -215,7 +282,7 @@ form input::placeholder,
 }
 
 .info-section li:hover {
-  color: #3a7bfd;
+  color: #151515;
 }
 
 .info-section li.clicked {
