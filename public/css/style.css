@@ -20,17 +20,14 @@ body {
   line-height: 1.6;
   height: 100%;
   min-height: 100vh;
-}
-
-h1,
-h2,
-h3 {
-  font-weight: 600;
+  font-weight: 400;
 }
 
 h1 {
-  font-size: 3rem;
+  font-size: 4rem;
   color: white;
+  letter-spacing: 2rem;
+  font-weight: 700;
 }
 
 h2 {
@@ -107,7 +104,8 @@ header img {
   padding: 1rem;
 }
 
-form {
+form,
+.todo {
   width: 100%;
   background: white;
   border-radius: 5px;
@@ -125,35 +123,43 @@ form {
   padding: 0 2rem;
 }
 
-form .round {
-  height: 24px;
-  width: 24px;
-  border-radius: 50%;
-  border: 1px solid #e4e5f1;
-}
-
-form input {
+form input,
+.todo input {
   padding: 2rem;
   font-size: 2rem;
   color: #9394a5;
   outline: none;
   border: none;
+  width: 100%;
 }
 
-form input::-webkit-input-placeholder {
+form input::-webkit-input-placeholder,
+.todo input::-webkit-input-placeholder {
   opacity: 0.5;
 }
 
-form input:-ms-input-placeholder {
+form input:-ms-input-placeholder,
+.todo input:-ms-input-placeholder {
   opacity: 0.5;
 }
 
-form input::-ms-input-placeholder {
+form input::-ms-input-placeholder,
+.todo input::-ms-input-placeholder {
   opacity: 0.5;
 }
 
-form input::placeholder {
+form input::placeholder,
+.todo input::placeholder {
   opacity: 0.5;
+}
+
+.round {
+  height: 24px;
+  width: 24px;
+  border-radius: 50%;
+  border: 1px solid #e4e5f1;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
 }
 
 .todo-list-container {
@@ -173,6 +179,18 @@ form input::placeholder {
   background: white;
   border-radius: 5px;
   background: white;
+}
+
+.todo-list-container .todo-list {
+  width: 100%;
+}
+
+.todo-list-container .todo p {
+  padding: 0 2rem;
+}
+
+.todo-list-container .todo .round.completed {
+  background: linearGradient #57ddff to #c058f3;
 }
 
 .info-section {
