@@ -24,7 +24,7 @@ html {
 body {
   font-family: "Josefin Sans", sans-serif;
   background: $lightGrayishBlue2;
-  color: $text-color;
+  color: $text;
   line-height: 1.6;
   height: 100%;
   min-height: 100vh;
@@ -62,42 +62,6 @@ img {
   width: 100%;
 }
 
-%btn {
-  display: inline-block;
-  border: 0;
-  background: $secondary-color;
-  color: #fff;
-  border-radius: 16px;
-  padding: 1rem 3rem;
-  text-transform: uppercase;
-  font-weight: bold;
-  font-size: 1.6rem;
-  outline: none;
-  cursor: pointer;
-  text-align: center;
-  &:hover {
-    transform: scale(1.1);
-  }
-}
-
-.btn-primary {
-  @extend %btn;
-  background-color: $primary-color;
-}
-
-.btn-secondary {
-  @extend %btn;
-  background-color: lighten($secondary-color, 20%);
-}
-
-.primary-text {
-  color: $primary-color;
-}
-
-.secondary-text {
-  color: $secondary-color;
-}
-
 header {
   position: fixed;
   z-index: 2;
@@ -105,7 +69,7 @@ header {
   height: 20vh;
 }
 
-.container {
+main {
   position: relative;
   width: 50%;
   max-width: 1000px;
@@ -120,5 +84,18 @@ header {
 .flex {
   display: flex;
   justify-content: center;
+  align-items: center;
+}
+
+.todo-list-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+}
+
+.info-section {
+  display: flex;
+  justify-content: space-between;
   align-items: center;
 }
