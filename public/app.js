@@ -9,6 +9,7 @@ const clearBtn = document.querySelector(".clear");
 let numberItems = 0;
 
 // event listeners
+document.addEventListener("DOMContentLoaded", getTodos);
 todoForm.addEventListener("submit", addTodo);
 todoList.addEventListener("click", checkDeleteTodo);
 todoFilter.addEventListener("click", filterTodo);
@@ -36,23 +37,44 @@ function addTodo(e) {
   todo.append(cross);
   // add to list
   todoList.append(todo);
+  // call the save function to save new data
+  saveLocalTodo(input.value);
+  // update items left counter
   numberItems += 1;
   updateItemsLeft();
+  // clear form  input
   input.value = "";
 }
 
 function checkDeleteTodo(e) {
   const item = e.target;
-  const todo = item.parentElement;
   console.log(item);
+  const todo = item.parentElement;
+  let todos = checkLocalStorage();
   if (item.classList.contains("cross")) {
+    removeLocalTodo(todo);
     todo.remove();
     numberItems -= 1;
   } else if (todo.classList.contains("todo")) {
-    todo.classList.contains("completed")
-      ? (numberItems += 1)
-      : (numberItems -= 1);
-    todo.classList.toggle("completed");
+    if (todo.classList.contains("completed")) {
+      todo.classList.remove("completed");
+      numberItems += 1;
+      todos.forEach(localTodo => {
+        if (localTodo.name === todo.children[1].innerText) {
+          localTodo.completed = false;
+        }
+      });
+      localStorage.setItem("todos", JSON.stringify(todos));
+    } else {
+      todo.classList.add("completed");
+      numberItems -= 1;
+      todos.forEach(localTodo => {
+        if (localTodo.name === todo.children[1].innerText) {
+          localTodo.completed = true;
+        }
+      });
+      localStorage.setItem("todos", JSON.stringify(todos));
+    }
   }
   updateItemsLeft();
 }
@@ -90,5 +112,62 @@ function clearComplete(e) {
     if (todos[i].classList.contains("completed")) {
       todos[i].remove();
     }
+  }
+}
+
+function checkLocalStorage() {
+  let todos;
+  if (localStorage.getItem("todos") === null) {
+    todos = [];
+  } else {
+    todos = JSON.parse(localStorage.getItem("todos"));
+  }
+  return todos;
+}
+
+function saveLocalTodo(todo, complete = false) {
+  let todos = checkLocalStorage();
+  todos.push({ name: todo, completed: complete });
+  localStorage.setItem("todos", JSON.stringify(todos));
+}
+
+function removeLocalTodo(todo) {
+  let todos = checkLocalStorage();
+  const todoInput = todo.children[1].innerText;
+  let newTodos = todos.filter(currentTodo => currentTodo.name !== todoInput);
+  console.log(newTodos);
+  localStorage.setItem("todos", JSON.stringify(newTodos));
+}
+
+function getTodos() {
+  let todos = checkLocalStorage();
+  if (todos !== null) {
+    todos.forEach(savedTodo => {
+      const todo = document.createElement("li");
+      // check if todo is completed
+      if (savedTodo.completed === true) {
+        todo.className = "todo completed";
+      } else {
+        todo.className = "todo";
+        numberItems += 1;
+      }
+      // add checkbox
+      const checkbox = document.createElement("div");
+      checkbox.classList.add("round");
+      todo.append(checkbox);
+      // add value
+      const todoText = document.createElement("p");
+      todoText.innerText = savedTodo.name;
+      todo.append(todoText);
+      // add cross
+      const cross = document.createElement("img");
+      cross.src = "img/icon-cross.svg";
+      cross.classList.add("cross");
+      todo.append(cross);
+      // add to list
+      todoList.append(todo);
+      // update items left counter
+      updateItemsLeft();
+    });
   }
 }
