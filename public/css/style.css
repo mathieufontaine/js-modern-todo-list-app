@@ -1,4 +1,28 @@
 @import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap");
+body.dark {
+  --text: #f9f7f7;
+  --main2: #181924;
+}
+
+body.dark .background {
+  --homeBg: url("/public/img/bg-desktop-dark.jpg");
+}
+
+body.dark .todo,
+body.dark form,
+body.dark .todo-list-container {
+  --main1: #25273d;
+  --box-shadow: 1px 1px 7px rgb(34, 34, 34);
+}
+
+body.dark .todo {
+  border-bottom: 1px solid #4d5066;
+}
+
+body.dark .todo .cross {
+  fill: #d4d5da;
+}
+
 *,
 *:before,
 *:after {
@@ -13,14 +37,20 @@ html {
 }
 
 body {
+  --text: #151515;
+  --main1: hsl(0, 0%, 98%);
+  --main2: hsl(236, 33%, 92%);
+  --transition: all 0.5s ease;
   font-family: "Josefin Sans", sans-serif;
-  background: #fafafa;
-  color: #151515;
+  background: var(--main2);
+  color: var(--text);
   font-size: 1.4rem;
   line-height: 1.6;
   height: 100%;
   min-height: 100vh;
   font-weight: 400;
+  -webkit-transition: var(--transition);
+  transition: var(--transition);
 }
 
 h1 {
@@ -30,19 +60,10 @@ h1 {
   font-weight: 700;
 }
 
-h2 {
-  font-size: 2.5rem;
-}
-
 p {
-  font-size: 1.4rem;
+  font-size: 1.8rem;
   font-weight: 400;
   margin-bottom: 0;
-}
-
-a {
-  text-decoration: none;
-  color: #fff;
 }
 
 ul {
@@ -54,12 +75,15 @@ img {
 }
 
 .background {
-  background: url("/public/img/bg-desktop-light.jpg");
+  --homeBg: url("/public/img/bg-desktop-light.jpg");
+  background: var(--homeBg);
   background-size: cover;
   position: absolute;
   top: 0;
   height: 30vh;
   width: 100%;
+  -webkit-transition: background 0.5s ease;
+  transition: background 0.5s ease;
 }
 
 main {
@@ -80,11 +104,13 @@ header {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  margin-bottom: 3rem;
 }
 
 header img {
   height: 25px;
   width: 25px;
+  cursor: pointer;
 }
 
 .flex {
@@ -108,7 +134,7 @@ header img {
 form,
 .todo {
   width: 100%;
-  background: white;
+  background: var(--main1);
   border-radius: 5px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -121,16 +147,19 @@ form,
           justify-content: flex-start;
   text-align: left;
   padding: 0 2rem;
+  -webkit-transition: var(--transition);
+  transition: var(--transition);
 }
 
 form input,
 .todo input {
   padding: 2rem;
   font-size: 2rem;
-  color: #9394a5;
   outline: none;
   border: none;
   width: 100%;
+  color: var(--tex);
+  background: transparent;
 }
 
 form input::-webkit-input-placeholder,
@@ -157,9 +186,9 @@ form input::placeholder,
   height: 24px;
   width: 24px;
   border-radius: 50%;
-  border: 1px solid #e4e5f1;
-  -webkit-transition: all 0.5s ease;
-  transition: all 0.5s ease;
+  border: 1px solid #d2d3db;
+  -webkit-transition: var(--transition);
+  transition: var(--transition);
   position: relative;
   cursor: pointer;
 }
@@ -182,6 +211,7 @@ form input::placeholder,
 }
 
 .todo-list-container {
+  --box-shadow: 1px 1px 7px rgb(220, 220, 220);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -195,14 +225,13 @@ form input::placeholder,
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  background: white;
+  background: var(--main1);
   border-radius: 5px;
-  background: white;
   margin: 2rem auto;
   border-radius: 5px;
   overflow: hidden;
-  -webkit-box-shadow: 1px 1px 7px gainsboro;
-          box-shadow: 1px 1px 7px gainsboro;
+  -webkit-box-shadow: var(--box-shadow);
+          box-shadow: var(--box-shadow);
 }
 
 .todo-list-container .todo-list {
@@ -210,7 +239,7 @@ form input::placeholder,
 }
 
 .todo-list-container .todo {
-  border-bottom: 1px solid #e4e5f1;
+  border-bottom: 1px solid var(--main2);
   border-radius: 0;
   cursor: move;
 }
@@ -277,12 +306,12 @@ form input::placeholder,
 
 .info-section li {
   cursor: pointer;
-  -webkit-transition: all 0.3s ease;
-  transition: all 0.3s ease;
+  -webkit-transition: var(--transition);
+  transition: var(--transition);
 }
 
 .info-section li:hover {
-  color: #151515;
+  color: var(--text);
 }
 
 .info-section li.selected {
@@ -302,4 +331,10 @@ form input::placeholder,
 
 .draggable.dragging {
   opacity: 0.5;
+}
+
+@media (max-width: 1080px) {
+  .main {
+    width: 70%;
+  }
 }

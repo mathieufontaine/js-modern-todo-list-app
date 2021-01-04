@@ -6,13 +6,14 @@ const todoFilter = document.querySelector(".todo-filter");
 const todoList = document.querySelector(".todo-list");
 const itemsLeft = document.querySelector(".items-left");
 const clearBtn = document.querySelector(".clear");
+const themeToggle = document.querySelector(".theme-toggle-btn");
 
 // items counter
 let numberItems = 0;
 
 // event listeners
 document.addEventListener("DOMContentLoaded", getTodos);
-document.addEventListener("DOMContentLoaded", initDragDrop);
+window.addEventListener("load", initDragDrop);
 todoForm.addEventListener("submit", addTodo);
 todoList.addEventListener("click", checkDeleteTodo);
 todoFilter.addEventListener("click", filterTodo);
@@ -175,3 +176,12 @@ function getTodos() {
     });
   }
 }
+
+themeToggle.addEventListener("click", () => {
+  document.body.classList.toggle("dark");
+  if (document.body.classList.contains("dark")) {
+    themeToggle.src = "img/icon-sun.svg";
+  } else {
+    themeToggle.src = "img/icon-moon.svg";
+  }
+});
