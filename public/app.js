@@ -1,3 +1,5 @@
+// import
+import { initDragDrop } from "./drag&drop.js";
 // selectors
 const todoForm = document.querySelector("form");
 const todoFilter = document.querySelector(".todo-filter");
@@ -10,6 +12,7 @@ let numberItems = 0;
 
 // event listeners
 document.addEventListener("DOMContentLoaded", getTodos);
+document.addEventListener("DOMContentLoaded", initDragDrop);
 todoForm.addEventListener("submit", addTodo);
 todoList.addEventListener("click", checkDeleteTodo);
 todoFilter.addEventListener("click", filterTodo);
@@ -20,7 +23,8 @@ function addTodo(e) {
   e.preventDefault();
   // create todo
   const todo = document.createElement("li");
-  todo.classList.add("todo");
+  todo.className = "todo draggable";
+  todo.setAttribute("draggable", true);
   // add checkbox
   const checkbox = document.createElement("div");
   checkbox.classList.add("round");
@@ -54,7 +58,7 @@ function checkDeleteTodo(e) {
   if (item.classList.contains("cross")) {
     removeLocalTodo(todo);
     todo.remove();
-    numberItems -= 1;
+    if (!todo.classList.contains("completed")) numberItems -= 1;
   } else if (todo.classList.contains("todo")) {
     if (todo.classList.contains("completed")) {
       todo.classList.remove("completed");
@@ -107,10 +111,10 @@ function filterTodo(e) {
 
 function clearComplete(e) {
   const todos = [...todoList.childNodes];
-  console.log(todos);
   for (let i = 0; i < todos.length; i++) {
     if (todos[i].classList.contains("completed")) {
       todos[i].remove();
+      removeLocalTodo(todos[i]);
     }
   }
 }
@@ -135,7 +139,6 @@ function removeLocalTodo(todo) {
   let todos = checkLocalStorage();
   const todoInput = todo.children[1].innerText;
   let newTodos = todos.filter(currentTodo => currentTodo.name !== todoInput);
-  console.log(newTodos);
   localStorage.setItem("todos", JSON.stringify(newTodos));
 }
 
@@ -146,11 +149,12 @@ function getTodos() {
       const todo = document.createElement("li");
       // check if todo is completed
       if (savedTodo.completed === true) {
-        todo.className = "todo completed";
+        todo.className = "todo draggable completed";
       } else {
-        todo.className = "todo";
+        todo.className = "todo draggable";
         numberItems += 1;
       }
+      todo.setAttribute("draggable", true);
       // add checkbox
       const checkbox = document.createElement("div");
       checkbox.classList.add("round");

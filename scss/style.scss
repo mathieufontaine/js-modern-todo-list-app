@@ -169,7 +169,7 @@ form,
   .todo {
     border-bottom: 1px solid $gray2;
     border-radius: 0;
-    cursor: pointer;
+    cursor: move;
     p {
       padding: 3rem;
 
@@ -235,4 +235,8 @@ form,
   padding: 5rem;
   font-size: 1rem;
   color: $gray4;
+}
+
+.draggable.dragging {
+  opacity: 0.5;
 }

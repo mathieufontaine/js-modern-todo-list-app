@@ -212,7 +212,7 @@ form input::placeholder,
 .todo-list-container .todo {
   border-bottom: 1px solid #e4e5f1;
   border-radius: 0;
-  cursor: pointer;
+  cursor: move;
 }
 
 .todo-list-container .todo p {
@@ -298,4 +298,8 @@ form input::placeholder,
   padding: 5rem;
   font-size: 1rem;
   color: #9394a5;
+}
+
+.draggable.dragging {
+  opacity: 0.5;
 }
