@@ -289,6 +289,10 @@ form input::placeholder,
   color: #3a7bfd;
 }
 
+.info-section .clear {
+  cursor: pointer;
+}
+
 .drag-drop {
   text-align: center;
   padding: 5rem;

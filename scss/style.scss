@@ -225,6 +225,9 @@ form,
       color: $primary;
     }
   }
+  .clear {
+    cursor: pointer;
+  }
 }
 
 .drag-drop {
