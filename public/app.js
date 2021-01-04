@@ -63,9 +63,11 @@ function updateItemsLeft() {
 }
 
 function filterTodo(e) {
+  const filterBtns = [...todoFilter.children];
+  filterBtns.forEach(btn => btn.classList.remove("selected"));
   const item = e.target;
-  console.log(item);
-  const todos = todoList.childNodes;
+  item.classList.add("selected");
+  const todos = [...todoList.childNodes];
   todos.forEach(todo => {
     if (item.classList.contains("all")) {
       todo.style.display = "flex";
@@ -82,12 +84,11 @@ function filterTodo(e) {
 }
 
 function clearComplete(e) {
-  const todos = todoList.childNodes;
+  const todos = [...todoList.childNodes];
   console.log(todos);
-  todos.forEach(todo => {
-    if (todo.classList.contains("completed")) {
-      todo.remove();
+  for (let i = 0; i < todos.length; i++) {
+    if (todos[i].classList.contains("completed")) {
+      todos[i].remove();
     }
-  });
-  console.log(todos);
+  }
 }

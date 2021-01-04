@@ -285,7 +285,7 @@ form input::placeholder,
   color: #151515;
 }
 
-.info-section li.clicked {
+.info-section li.selected {
   color: #3a7bfd;
 }
 
