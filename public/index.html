@@ -12,7 +12,8 @@
 </head>
 
 <body>
-    <div class="background"></div>
+    <img src="img/bg-desktop-light.jpg" class="background desktop"></img>
+    <img src="img/bg-mobile-light.jpg" class="background mobile"></img>
     <main>
         <header>
             <h1>TODO</h1>
@@ -25,16 +26,25 @@
         </form>
         <div class="todo-list-container">
             <ul class="todo-list"></ul>
-            <div class="info-section">
+            <div class="info-section desktop">
                 <div class="items-left">items left</div>
                 <ul class="todo-filter flex">
                     <li class="all selected">All</li>
                     <li class="active">Active</li>
-                    <li class="completed">completed</li>
+                    <li class="completed">Completed</li>
                 </ul>
                 <div class="clear">clear complete</div>
             </div>
+            <div class="info-section mobile">
+                <div class="items-left">items left</div>
+                <div class="clear">clear complete</div>
+            </div>
         </div>
+        <ul class="todo-filter flex mobile">
+            <li class="all selected">All</li>
+            <li class="active">Active</li>
+            <li class="completed">Completed</li>
+        </ul>
         <div class="drag-drop">
             <p>Drag and drop to reorder list</p>
         </div>

@@ -11,7 +11,7 @@ body.dark {
   --text: #f9f7f7;
   --main2: #181924;
   .background {
-    --homeBg: url("/public/img/bg-desktop-dark.jpg");
+    // --homeBg: url("/public/img/bg-desktop-dark.jpg");
   }
   .todo,
   form,
@@ -21,9 +21,10 @@ body.dark {
   }
   .todo {
     border-bottom: 1px solid hsl(233, 14%, 35%);
-    .cross {
-      fill: #d4d5da;
-    }
+  }
+  .todo-filter.mobile {
+    --main1: #25273d;
+    background: var(--main1);
   }
 }
 
@@ -77,9 +78,10 @@ img {
 }
 
 .background {
-  --homeBg: url("/public/img/bg-desktop-light.jpg");
-  background: var(--homeBg);
-  background-size: cover;
+  // --homeBg: url("/public/img/bg-desktop-light.jpg");
+  // background: var(--homeBg);
+  // background-size: cover;
+  object-fit: cover;
   position: absolute;
   top: 0;
   height: 30vh;
@@ -131,11 +133,10 @@ form,
   transition: var(--transition);
   input {
     padding: 2rem;
-    font-size: 2rem;
     outline: none;
     border: none;
     width: 100%;
-    color: var(--tex);
+    color: var(--text);
     background: transparent;
     &::placeholder {
       opacity: 0.5;
@@ -231,6 +232,7 @@ form,
   width: 100%;
   padding: 2rem;
   color: $gray4;
+  font-size: 1.8rem;
   li {
     cursor: pointer;
     transition: var(--transition);
@@ -245,6 +247,24 @@ form,
     cursor: pointer;
   }
 }
+.todo-filter {
+  &.mobile {
+    background: var(--main1);
+    padding: 1rem;
+    border-radius: 10px;
+    font-size: 2rem;
+    li {
+      cursor: pointer;
+      transition: var(--transition);
+      &:hover {
+        color: var(--text);
+      }
+      &.selected {
+        color: $primary;
+      }
+    }
+  }
+}
 
 .drag-drop {
   text-align: center;
@@ -257,8 +277,27 @@ form,
   opacity: 0.5;
 }
 
+.mobile {
+  display: none;
+}
+
 @media (max-width: 1080px) {
-  .main {
+  main {
     width: 70%;
+  }
+}
+
+@media (max-width: 800px) {
+  html {
+    font-size: 50%;
+  }
+  main {
+    width: 90%;
+  }
+  .desktop {
+    display: none;
+  }
+  .mobile {
+    display: flex;
   }
 }

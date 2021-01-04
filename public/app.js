@@ -1,12 +1,16 @@
 // import
 import { initDragDrop } from "./drag&drop.js";
+
 // selectors
 const todoForm = document.querySelector("form");
-const todoFilter = document.querySelector(".todo-filter");
+const todoFilter = document.querySelectorAll(".todo-filter");
+const todoFilterBtns = document.querySelectorAll(".todo-filter li");
 const todoList = document.querySelector(".todo-list");
 const itemsLeft = document.querySelector(".items-left");
 const clearBtn = document.querySelector(".clear");
-const themeToggle = document.querySelector(".theme-toggle-btn");
+const themeToggleBtn = document.querySelector(".theme-toggle-btn");
+const backgroundDesktop = document.querySelector(".background.desktop");
+const backgroundMobile = document.querySelector(".background.mobile");
 
 // items counter
 let numberItems = 0;
@@ -16,9 +20,9 @@ document.addEventListener("DOMContentLoaded", getTodos);
 window.addEventListener("load", initDragDrop);
 todoForm.addEventListener("submit", addTodo);
 todoList.addEventListener("click", checkDeleteTodo);
-todoFilter.addEventListener("click", filterTodo);
+todoFilter.forEach(element => element.addEventListener("click", filterTodo));
 clearBtn.addEventListener("click", clearComplete);
-
+themeToggleBtn.addEventListener("click", themeToggle);
 // functions
 function addTodo(e) {
   e.preventDefault();
@@ -90,8 +94,8 @@ function updateItemsLeft() {
 }
 
 function filterTodo(e) {
-  const filterBtns = [...todoFilter.children];
-  filterBtns.forEach(btn => btn.classList.remove("selected"));
+  // const filterBtns = [...todoFilter.children];
+  todoFilterBtns.forEach(btn => btn.classList.remove("selected"));
   const item = e.target;
   item.classList.add("selected");
   const todos = [...todoList.childNodes];
@@ -177,11 +181,15 @@ function getTodos() {
   }
 }
 
-themeToggle.addEventListener("click", () => {
+function themeToggle() {
   document.body.classList.toggle("dark");
   if (document.body.classList.contains("dark")) {
     themeToggle.src = "img/icon-sun.svg";
+    backgroundDesktop.src = "img/bg-desktop-dark.jpg";
+    backgroundMobile.src = "img/bg-mobile-dark.jpg";
   } else {
     themeToggle.src = "img/icon-moon.svg";
+    backgroundDesktop.src = "img/bg-desktop-light.jpg";
+    backgroundMobile.src = "img/bg-mobile-light.jpg";
   }
-});
+}
