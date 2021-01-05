@@ -10,9 +10,6 @@ $gray4: hsl(236, 9%, 61%);
 body.dark {
   --text: #f9f7f7;
   --main2: #181924;
-  .background {
-    // --homeBg: url("/public/img/bg-desktop-dark.jpg");
-  }
   .todo,
   form,
   .todo-list-container {
@@ -186,7 +183,7 @@ form,
   .todo {
     border-bottom: 1px solid var(--main2);
     border-radius: 0;
-    cursor: move;
+    cursor: pointer;
     p {
       padding: 3rem;
 
@@ -275,6 +272,7 @@ form,
 
 .draggable.dragging {
   opacity: 0.5;
+  cursor: grab;
 }
 
 .mobile {

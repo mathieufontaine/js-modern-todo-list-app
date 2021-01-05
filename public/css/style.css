@@ -236,7 +236,7 @@ form input::placeholder,
 .todo-list-container .todo {
   border-bottom: 1px solid var(--main2);
   border-radius: 0;
-  cursor: move;
+  cursor: pointer;
 }
 
 .todo-list-container .todo p {
@@ -348,6 +348,8 @@ form input::placeholder,
 
 .draggable.dragging {
   opacity: 0.5;
+  cursor: -webkit-grab;
+  cursor: grab;
 }
 
 .mobile {
