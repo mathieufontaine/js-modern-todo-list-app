@@ -2,6 +2,7 @@
 body.dark {
   --text: #f9f7f7;
   --main2: #181924;
+  --main1: #25273d;
 }
 
 body.dark .todo,
@@ -67,6 +68,12 @@ ul {
   list-style: none;
 }
 
+a {
+  text-decoration: none;
+  color: var(--text);
+  font-weight: 700;
+}
+
 img {
   width: 100%;
 }
@@ -88,6 +95,12 @@ main {
   max-width: 1000px;
   margin: 5rem auto;
   min-height: 30vh;
+}
+
+.container {
+  max-width: 1000px;
+  width: 50%;
+  margin: auto;
 }
 
 header {
@@ -121,7 +134,6 @@ header img {
           align-items: center;
 }
 
-.flex > div,
 .flex > li,
 .flex > p {
   padding: 1rem;
@@ -314,8 +326,10 @@ form input::placeholder,
   color: #3a7bfd;
 }
 
-.info-section .clear {
+.info-section .clear,
+.info-section .items-left {
   cursor: pointer;
+  padding: 1rem;
 }
 
 .todo-filter.mobile {
@@ -356,8 +370,38 @@ form input::placeholder,
   display: none;
 }
 
+footer {
+  padding: 1rem;
+  background: var(--main1);
+  color: var(--text);
+}
+
+footer a:hover {
+  color: #3a7bfd;
+}
+
+footer .source,
+footer .author,
+footer .links {
+  padding: 1rem;
+}
+
+footer .source a {
+  text-decoration: underline;
+}
+
+footer .fab {
+  font-size: 2rem;
+  padding: 0.5rem;
+}
+
+footer .tiret {
+  padding: 1rem;
+}
+
 @media (max-width: 1080px) {
-  main {
+  main,
+  .container {
     width: 70%;
   }
 }
@@ -366,7 +410,8 @@ form input::placeholder,
   html {
     font-size: 50%;
   }
-  main {
+  main,
+  .container {
     width: 90%;
   }
   .desktop {
@@ -376,5 +421,14 @@ form input::placeholder,
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
+  }
+  footer .container {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .tiret {
+    display: none;
   }
 }

@@ -1,21 +1,21 @@
-// import
+// * import
 import { initDragDrop } from "./drag&drop.js";
 
-// selectors
+// * selectors
 const todoForm = document.querySelector("form");
 const todoFilter = document.querySelectorAll(".todo-filter");
 const todoFilterBtns = document.querySelectorAll(".todo-filter li");
 const todoList = document.querySelector(".todo-list");
-const itemsLeft = document.querySelector(".items-left");
+const itemsLeft = document.querySelectorAll(".items-left");
 const clearBtn = document.querySelector(".clear");
 const themeToggleBtn = document.querySelector(".theme-toggle-btn");
 const backgroundDesktop = document.querySelector(".background.desktop");
 const backgroundMobile = document.querySelector(".background.mobile");
 
-// items counter
+// * items counter
 let numberItems = 0;
 
-// event listeners
+// * event listeners
 document.addEventListener("DOMContentLoaded", getTodos);
 window.addEventListener("load", initDragDrop);
 todoForm.addEventListener("submit", addTodo);
@@ -23,7 +23,8 @@ todoList.addEventListener("click", checkDeleteTodo);
 todoFilter.forEach(element => element.addEventListener("click", filterTodo));
 clearBtn.addEventListener("click", clearComplete);
 themeToggleBtn.addEventListener("click", themeToggle);
-// functions
+
+// * functions
 function addTodo(e) {
   e.preventDefault();
   // create todo
@@ -90,7 +91,7 @@ function checkDeleteTodo(e) {
 
 function updateItemsLeft() {
   numberItems < 0 ? (numberItems = 0) : numberItems;
-  itemsLeft.innerText = `${numberItems} items left`;
+  itemsLeft.forEach(el => (el.innerText = `${numberItems} items left`));
 }
 
 function filterTodo(e) {

@@ -10,6 +10,7 @@ $gray4: hsl(236, 9%, 61%);
 body.dark {
   --text: #f9f7f7;
   --main2: #181924;
+  --main1: #25273d;
   .todo,
   form,
   .todo-list-container {
@@ -70,6 +71,12 @@ ul {
   list-style: none;
 }
 
+a {
+  text-decoration: none;
+  color: var(--text);
+  font-weight: 700;
+}
+
 img {
   width: 100%;
 }
@@ -93,6 +100,11 @@ main {
   margin: 5rem auto;
   min-height: 30vh;
 }
+.container {
+  max-width: 1000px;
+  width: 50%;
+  margin: auto;
+}
 
 header {
   display: flex;
@@ -110,7 +122,6 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
-  > div,
   > li,
   > p {
     padding: 1rem;
@@ -240,8 +251,10 @@ form,
       color: $primary;
     }
   }
-  .clear {
+  .clear,
+  .items-left {
     cursor: pointer;
+    padding: 1rem;
   }
 }
 .todo-filter {
@@ -279,8 +292,35 @@ form,
   display: none;
 }
 
+footer {
+  padding: 1rem;
+  background: var(--main1);
+  color: var(--text);
+  a:hover {
+    color: $primary;
+  }
+  .source,
+  .author,
+  .links {
+    padding: 1rem;
+  }
+  .source {
+    a {
+      text-decoration: underline;
+    }
+  }
+  .fab {
+    font-size: 2rem;
+    padding: 0.5rem;
+  }
+  .tiret {
+    padding: 1rem;
+  }
+}
+
 @media (max-width: 1080px) {
-  main {
+  main,
+  .container {
     width: 70%;
   }
 }
@@ -289,7 +329,8 @@ form,
   html {
     font-size: 50%;
   }
-  main {
+  main,
+  .container {
     width: 90%;
   }
   .desktop {
@@ -297,5 +338,11 @@ form,
   }
   .mobile {
     display: flex;
+  }
+  footer .container {
+    flex-direction: column;
+  }
+  .tiret {
+    display: none;
   }
 }
