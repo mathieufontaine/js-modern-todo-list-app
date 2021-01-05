@@ -98,12 +98,7 @@ main {
   width: 50%;
   max-width: 1000px;
   margin: 5rem auto;
-  min-height: 30vh;
-}
-.container {
-  max-width: 1000px;
-  width: 50%;
-  margin: auto;
+  min-height: 90vh;
 }
 
 header {
@@ -293,28 +288,34 @@ form,
 }
 
 footer {
-  padding: 1rem;
   background: var(--main1);
   color: var(--text);
-  a:hover {
-    color: $primary;
-  }
-  .source,
-  .author,
-  .links {
+  .container {
     padding: 1rem;
-  }
-  .source {
-    a {
-      text-decoration: underline;
+    min-height: 10vh;
+    max-width: 1000px;
+    width: 50%;
+    margin: auto;
+    a:hover {
+      color: $primary;
     }
-  }
-  .fab {
-    font-size: 2rem;
-    padding: 0.5rem;
-  }
-  .tiret {
-    padding: 1rem;
+    .source,
+    .author,
+    .links {
+      padding: 1rem;
+    }
+    .source {
+      a {
+        text-decoration: underline;
+      }
+    }
+    .fab {
+      font-size: 2rem;
+      padding: 0.5rem;
+    }
+    .tiret {
+      padding: 1rem;
+    }
   }
 }
 
@@ -329,8 +330,7 @@ footer {
   html {
     font-size: 50%;
   }
-  main,
-  .container {
+  main {
     width: 90%;
   }
   .desktop {
@@ -341,6 +341,7 @@ footer {
   }
   footer .container {
     flex-direction: column;
+    width: 90%;
   }
   .tiret {
     display: none;

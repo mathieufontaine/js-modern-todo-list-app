@@ -94,13 +94,7 @@ main {
   width: 50%;
   max-width: 1000px;
   margin: 5rem auto;
-  min-height: 30vh;
-}
-
-.container {
-  max-width: 1000px;
-  width: 50%;
-  margin: auto;
+  min-height: 90vh;
 }
 
 header {
@@ -371,31 +365,38 @@ form input::placeholder,
 }
 
 footer {
-  padding: 1rem;
   background: var(--main1);
   color: var(--text);
 }
 
-footer a:hover {
+footer .container {
+  padding: 1rem;
+  min-height: 10vh;
+  max-width: 1000px;
+  width: 50%;
+  margin: auto;
+}
+
+footer .container a:hover {
   color: #3a7bfd;
 }
 
-footer .source,
-footer .author,
-footer .links {
+footer .container .source,
+footer .container .author,
+footer .container .links {
   padding: 1rem;
 }
 
-footer .source a {
+footer .container .source a {
   text-decoration: underline;
 }
 
-footer .fab {
+footer .container .fab {
   font-size: 2rem;
   padding: 0.5rem;
 }
 
-footer .tiret {
+footer .container .tiret {
   padding: 1rem;
 }
 
@@ -410,8 +411,7 @@ footer .tiret {
   html {
     font-size: 50%;
   }
-  main,
-  .container {
+  main {
     width: 90%;
   }
   .desktop {
@@ -427,6 +427,7 @@ footer .tiret {
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
+    width: 90%;
   }
   .tiret {
     display: none;
