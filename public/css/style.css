@@ -93,7 +93,8 @@ main {
   position: relative;
   width: 50%;
   max-width: 1000px;
-  margin: 5rem auto;
+  margin: auto;
+  padding: 5rem 0;
   min-height: 90vh;
 }
 
