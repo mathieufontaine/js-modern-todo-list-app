@@ -27,33 +27,38 @@ themeToggleBtn.addEventListener("click", themeToggle);
 // * functions
 function addTodo(e) {
   e.preventDefault();
-  // create todo
-  const todo = document.createElement("li");
-  todo.className = "todo draggable";
-  todo.setAttribute("draggable", true);
-  // add checkbox
-  const checkbox = document.createElement("div");
-  checkbox.classList.add("round");
-  todo.append(checkbox);
-  // add value
+  // check if input is not empty
   let input = e.target.children[1];
-  const todoText = document.createElement("p");
-  todoText.innerText = input.value;
-  todo.append(todoText);
-  // add cross
-  const cross = document.createElement("img");
-  cross.src = "img/icon-cross.svg";
-  cross.classList.add("cross");
-  todo.append(cross);
-  // add to list
-  todoList.append(todo);
-  // call the save function to save new data
-  saveLocalTodo(input.value);
-  // update items left counter
-  numberItems += 1;
-  updateItemsLeft();
-  // clear form  input
-  input.value = "";
+  if (input.value !== "") {
+    // create todo
+    const todo = document.createElement("li");
+    todo.className = "todo draggable";
+    todo.setAttribute("draggable", true);
+    // add checkbox
+    const checkbox = document.createElement("div");
+    checkbox.classList.add("round");
+    todo.append(checkbox);
+    // add value
+    const todoText = document.createElement("p");
+    todoText.innerText = input.value;
+    todo.append(todoText);
+    // add cross
+    const cross = document.createElement("img");
+    cross.src = "img/icon-cross.svg";
+    cross.classList.add("cross");
+    todo.append(cross);
+    // add to list
+    todoList.append(todo);
+    // call the save function to save new data
+    saveLocalTodo(input.value);
+    // update items left counter
+    numberItems += 1;
+    updateItemsLeft();
+    // clear form  input
+    input.value = "";
+  } else {
+    alert("Your todo can't be empty");
+  }
 }
 
 function checkDeleteTodo(e) {
@@ -104,7 +109,7 @@ function filterTodo(e) {
     if (item.classList.contains("all")) {
       todo.style.display = "flex";
     } else if (item.classList.contains("active")) {
-      todo.classList.contains("active")
+      !todo.classList.contains("completed")
         ? (todo.style.display = "flex")
         : (todo.style.display = "none");
     } else {
